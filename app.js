@@ -3,9 +3,7 @@
 // ==================== API 配置 ====================
 // 注意：需要修改为你的后端地址
 // GitHub Pages 部署时，填入你的 ModelScope 后端地址
-// 例如: const API_BASE = 'https://xxxxxx.modelscope.cn';
-// 暂时使用本地测试地址，等ModelScope服务启动后修改
-const API_BASE = 'http://127.0.0.1:7860'; // 修改这里为你的ModelScope地址
+const API_BASE = 'https://modelscope.cn/studios/yiye001/xiaosuo';
 
 // ==================== 数据存储 ====================
 const STORAGE_KEYS = {
