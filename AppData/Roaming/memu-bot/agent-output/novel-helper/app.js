@@ -6,7 +6,7 @@ const LOCAL_DATA = {
     plot: {
         all: [
             "主角在修炼时意外突破境界，却引来了强大的敌人追踪",
-            "secret组织暗中操控着整个帝国的命脉，主角意外发现了他们的阴谋",
+            "神秘组织暗中操控着整个帝国的命脉，主角意外发现了他们的阴谋",
             "千年古墓现世，各方势力齐聚，主角能否在争夺中全身而退？",
             "主角的前世记忆突然觉醒，原来自己背负着重大的使命",
             "在最绝望的时刻，主角发现自己体内隐藏着古老血脉的力量",
@@ -35,7 +35,7 @@ const LOCAL_DATA = {
             "主角被冤枉成凶手，必须证明自己的清白",
             "主角的师父是隐藏的叛徒，一切都只是一场阴谋",
             "主角所在的城市突然被怪物包围，生死存亡之际",
-            "主角发现了皇帝的secret，面临着杀身之祸",
+            "主角发现了皇帝的秘密，面临着杀身之祸",
             "主角的好友为了救他而牺牲自己"
         ],
         romance: [
@@ -77,13 +77,13 @@ const LOCAL_DATA = {
         mystery: [
             "主角发现自己身边的朋友都在暗中监视他",
             "主角每晚都会做一个相同的预知梦",
-            "主角的身世之谜与一个secret组织有关",
+            "主角的身世之谜与一个神秘组织有关",
             "主角意外发现一本神秘的日记，记录着未来的事情",
-            "主角的师父隐藏着secret身份",
+            "主角的师父隐藏着真实身份",
             "主角所在的世界其实是一个巨大的幻阵",
             "主角遇到的每一个人都似乎在引导他走向某个命运",
-            "主角发现自己可以听到别人内心的secret",
-            "主角的家族世代守护着一个secret不能让任何人知道",
+            "主角发现自己可以听到别人内心的秘密",
+            "主角的家族世代守护着一个秘密不能让任何人知道",
             "主角在梦中看到了自己死亡的景象"
         ],
         turn: [
@@ -100,7 +100,7 @@ const LOCAL_DATA = {
         ]
     },
 
-    // 随机名称 - 人物
+    // 随机名称
     name: {
         person: {
             xuanhuan: {
@@ -134,7 +134,6 @@ const LOCAL_DATA = {
                 4: ['秦始皇', '汉武帝']
             }
         },
-        // 地名
         place: {
             xuanhuan: ['乌坦城', '加玛帝国', '黑角域', '中州', '星陨阁', '花宗', '丹塔', '焚炎谷', '天府', '魂殿', '天府联盟', '古界', '药界', '魂族', '古族'],
             qihuan: ['荒古禁地', '北域', '南域', '中州', '东荒', '西漠', '北斗星域', '紫微星', '荧惑', '火星'],
@@ -143,7 +142,6 @@ const LOCAL_DATA = {
             scifi: ['新地球', '火星基地', '月球城', '木星轨道站', '土星环', '半人马座', '三体星系'],
             history: ['长安', '洛阳', '金陵', '燕京', '姑苏', '蜀中', '塞外', '西域', '南洋', '东海']
         },
-        // 门派
         faction: {
             xuanhuan: ['焚炎谷', '花宗', '星陨阁', '丹塔', '天府', '魂殿', '古族', '萧门', '炎盟', '蛇人部落', '天冥宗', '冰河谷', '慕骨门'],
             qihuan: ['太玄门', '摇光圣地', '瑶池圣地', '道一圣地', '姬家', '摇光', '太初古矿', '荒古禁地'],
@@ -152,7 +150,6 @@ const LOCAL_DATA = {
             scifi: ['星际联邦', '银河帝国', '新人类联盟', '机械联邦'],
             history: ['少林', '武当', '华山', '峨眉', '昆仑', '天山', '丐帮', '明教', '日月神教']
         },
-        // 武器
         weapon: {
             xuanhuan: ['玄重尺', '异火', '青莲地心火', '骨灵冷火', '三千焱炎火', '八荒破灭矛', '金帝焚天焰', '红莲业火', '琉璃心火', '阴阳双炎', '九龙雷罡火', '龟灵地火', '陨落心炎', '海心焰', '火云水炎', '火稚', '红粉真人', '太阳神火'],
             qihuan: ['万物母气鼎', '混沌青莲', '仙泪绿金剑', '龙纹黑金鼎', '凰血赤金铃', '神痕紫金剑', '龙骨', '圣印发', '仙钟', '河图洛书', '封神榜', '打神鞭', '杏黄旗', '戊己杏黄旗', '青莲宝色旗', '离地焰光旗', '真武皂雕旗', '中央戊己杏黄旗'],
@@ -161,7 +158,6 @@ const LOCAL_DATA = {
             scifi: ['光剑', '量子剑', '等离子剑', '引力场', '立场盾'],
             history: ['倚天剑', '屠龙刀', '君子剑', '湛卢剑', '越王勾践剑', '唐刀', '苗刀']
         },
-        // 功法
         technique: {
             xuanhuan: ['焚诀', '八极崩', '开山印', '翻海印', '毁灭火莲', '三色火莲', '佛怒火莲', '三千雷动', '三千雷幻身', '龙凤体', '金刚琉璃体', '天阶斗技', '地阶斗技'],
             qihuan: ['皆字秘', '者字秘', '行字秘', '坐字秘', '前字秘', '后字秘', '斗字秘', '兵字秘', '皆字秘', '组字秘', '数字秘'],
@@ -170,7 +166,6 @@ const LOCAL_DATA = {
             scifi: ['基因锁', '念力', '虚空能', '暗能量'],
             history: ['易筋经', '洗髓经', '九阴真经', '九阳真经', '北冥神功', '吸星大法', '葵花宝典', '辟邪剑法']
         },
-        // 法宝
         treasure: {
             xuanhuan: ['帝之本源', '陀舍古帝玉', '净莲妖火', '金帝焚天焰', '虚无吞炎', '净莲妖圣传承', '古帝传承', '帝品雏丹', '斗圣骸骨', '天墓之魂', '妖火本源', '菩提古树', '净莲妖火地图', '古图'],
             qihuan: ['万物母气', '混沌种青莲', '仙根', '不死药', '九转仙丹', '悟道古茶树', '圣果', '神泉'],
@@ -187,7 +182,7 @@ const LOCAL_DATA = {
         "「我命由我不由天！」",
         "「这天，遮不住我的眼；这地，埋不了我的心！」",
         "「凡是阻我者，皆可杀！」",
-        "「，既然已无路可退，那便战吧！」",
+        "「既然已无路可退，那便战吧！」",
         "「你以为躲起来就找不到你了吗？没有用的！你是那样拉风的男人，不管在什么地方，就像漆黑中的萤火虫一样，那样的鲜明，那样的出众。」",
         "「我这一剑，可搬山、断江、倒海、降妖、镇魔、敕神、摘星、摧城、开天！」",
         "「修仙之路，本就是与天争命，若是连这点勇气都没有，还修什么仙？」",
@@ -237,7 +232,7 @@ const LOCAL_DATA = {
         "主角每做一个梦，现实中就会发生相应的事情",
         "主角生活的是一个虚拟世界，觉醒后发现了真相",
         "主角的前世是一个创造了世界的存在",
-        "，主角其实是自己的后人穿越过来的",
+        "主角其实是自己的后人穿越过来的",
         "主角一直在寻找的仇人，实际上是一直在暗中帮助他的人",
         "主角的武器有自我意识，而且是活的生命体",
         "主角修炼的功法会让他逐渐失去感情",
@@ -246,11 +241,11 @@ const LOCAL_DATA = {
         "主角其实是某个实验中诞生的产物",
         "主角的师父是穿越者，带来了另一个世界的知识",
         "主角的血液有着特殊的力量，被各方势力争夺",
-        "，主角能够看到别人剩余的寿命",
+        "主角能够看到别人剩余的寿命",
         "主角其实是天道的化身，正在体验人间",
         "主角的家族世代都被诅咒，每一代都活不过三十岁",
-        "主角能够与动植物沟通，得知世界的secret",
-        "，主角其实是另一个世界的入侵者",
+        "主角能够与动植物沟通，得知世界的秘密",
+        "主角其实是另一个世界的入侵者",
         "主角身边的一切都是被安排好的剧本"
     ]
 };
@@ -269,7 +264,7 @@ function generatePlot() {
     const plots = LOCAL_DATA.plot[type] || LOCAL_DATA.plot.all;
     const plot = getRandomItem(plots);
     
-    document.getElementById('plotResult').innerHTML = `<div class="plot-content">${plot}</div>`;
+    document.getElementById('plotResult').innerHTML = '<div class="plot-content">' + plot + '</div>';
     document.getElementById('plotActions').style.display = 'flex';
     currentPlot = plot;
     return plot;
@@ -326,14 +321,14 @@ function generateName(type) {
         name = prefix + name;
     }
     
-    document.getElementById('nameResult').innerHTML = `<div class="name-content">${name}</div>`;
+    document.getElementById('nameResult').innerHTML = '<div class="name-content">' + name + '</div>';
     return name;
 }
 
 // 随机对话
 function generateDialogue() {
     const dialogue = getRandomItem(LOCAL_DATA.dialogue);
-    document.getElementById('dialogueResult').innerHTML = `<div class="plot-content">${dialogue}</div>`;
+    document.getElementById('dialogueResult').innerHTML = '<div class="plot-content">' + dialogue + '</div>';
     document.getElementById('dialogueActions').style.display = 'flex';
     currentDialogue = dialogue;
     return dialogue;
@@ -362,7 +357,7 @@ function generateDescription() {
     const descriptions = LOCAL_DATA.description[type] || LOCAL_DATA.description.environment;
     const desc = getRandomItem(descriptions);
     
-    document.getElementById('descResult').innerHTML = `<div class="plot-content">${desc}</div>`;
+    document.getElementById('descResult').innerHTML = '<div class="plot-content">' + desc + '</div>';
     document.getElementById('descActions').style.display = 'flex';
     currentDescription = desc;
     return desc;
@@ -387,7 +382,7 @@ function saveDescription() {
 // 随机灵感
 function generateIdea() {
     const idea = getRandomItem(LOCAL_DATA.idea);
-    document.getElementById('ideaResult').innerHTML = `<div class="plot-content">${idea}</div>`;
+    document.getElementById('ideaResult').innerHTML = '<div class="plot-content">' + idea + '</div>';
     document.getElementById('ideaActions').style.display = 'flex';
     currentIdea = idea;
     return idea;
@@ -419,7 +414,6 @@ function generateIdeaWithAI() { alert('AI生成需要配置API，请在设置中
 
 // AI聊天 - 需要API
 async function chatWithAI(message, history, useSearch = false) {
-    // 这里可以以后接入其他免费API
     throw new Error('请配置API后才能使用AI聊天功能');
 }
 
@@ -446,11 +440,8 @@ async function sendChat() {
 function addChatMessage(sender, content) {
     const container = document.getElementById('chatMessages');
     const div = document.createElement('div');
-    div.className = `chat-message ${sender}`;
-    div.innerHTML = `
-        <div class="message-avatar"><i class="fas fa-${sender === 'user' ? 'user' : 'robot'}"></i></div>
-        <div class="message-content">${content.replace(/\n/g, '<br>')}</div>
-    `;
+    div.className = 'chat-message ' + sender;
+    div.innerHTML = '<div class="message-avatar"><i class="fas fa-' + (sender === 'user' ? 'user' : 'robot') + '"></i></div><div class="message-content">' + content.replace(/\n/g, '<br>') + '</div>';
     container.appendChild(div);
     container.scrollTop = container.scrollHeight;
     return div.id = 'msg-' + Date.now();
@@ -478,17 +469,17 @@ function saveMaterials(materials) {
 
 // ==================== 页面导航 ====================
 function navigateTo(pageId) {
-    document.querySelectorAll('.nav-item').forEach(item => {
+    document.querySelectorAll('.nav-item').forEach(function(item) {
         item.classList.remove('active');
         if (item.dataset.page === pageId) item.classList.add('active');
     });
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
     document.getElementById(pageId).classList.add('active');
     if (pageId === 'material') renderMaterials();
 }
 
-document.querySelectorAll('.nav-item').forEach(item => {
-    item.addEventListener('click', (e) => {
+document.querySelectorAll('.nav-item').forEach(function(item) {
+    item.addEventListener('click', function(e) {
         e.preventDefault();
         navigateTo(item.dataset.page);
     });
@@ -508,8 +499,8 @@ function addMaterial() {
     materials.unshift({
         id: Date.now(),
         title: title || '未命名',
-        content,
-        category,
+        content: content,
+        category: category,
         date: new Date().toLocaleDateString('zh-CN')
     });
     saveMaterials(materials);
@@ -521,7 +512,7 @@ function addMaterial() {
 
 function deleteMaterial(id) {
     if (!confirm('确定删除此素材吗？')) return;
-    const materials = getMaterials().filter(m => m.id !== id);
+    const materials = getMaterials().filter(function(m) { return m.id !== id; });
     saveMaterials(materials);
     renderMaterials();
 }
@@ -531,7 +522,7 @@ function renderMaterials() {
     const container = document.getElementById('materialList');
     if (!container) return;
     
-    const filtered = currentMaterialFilter === 'all' ? materials : materials.filter(m => m.category === currentMaterialFilter);
+    const filtered = currentMaterialFilter === 'all' ? materials : materials.filter(function(m) { return m.category === currentMaterialFilter; });
     
     if (filtered.length === 0) {
         container.innerHTML = '<p style="text-align:center;color:var(--text-muted)">暂无素材</p>';
@@ -540,25 +531,15 @@ function renderMaterials() {
     
     const categoryNames = { plot: '情节', name: '名称', dialogue: '对话', description: '描写', idea: '灵感' };
     
-    container.innerHTML = filtered.map(m => `
-        <div class="material-item">
-            <div style="display:flex;justify-content:space-between;align-items:center;width:100%">
-                <div>
-                    <h3>${m.title}</h3>
-                    <span class="material-category">${categoryNames[m.category] || m.category}</span>
-                </div>
-                <button class="delete-btn" onclick="deleteMaterial(${m.id})"><i class="fas fa-trash"></i></button>
-            </div>
-            <p class="material-content">${m.content}</p>
-            <small style="color:var(--text-muted)">${m.date}</small>
-        </div>
-    `).join('');
+    container.innerHTML = filtered.map(function(m) {
+        return '<div class="material-item"><div style="display:flex;justify-content:space-between;align-items:center;width:100%"><div><h3>' + m.title + '</h3><span class="material-category">' + (categoryNames[m.category] || m.category) + '</span></div><button class="delete-btn" onclick="deleteMaterial(' + m.id + ')"><i class="fas fa-trash"></i></button></div><p class="material-content">' + m.content + '</p><small style="color:var(--text-muted)">' + m.date + '</small></div>';
+    }).join('');
 }
 
 // 素材筛选
-document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+document.querySelectorAll('.filter-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
         btn.classList.add('active');
         currentMaterialFilter = btn.dataset.filter;
         renderMaterials();
@@ -575,12 +556,10 @@ if (localStorage.getItem(STORAGE_KEYS.theme) === 'dark') {
     themeBtn.innerHTML = '<i class="fas fa-sun"></i><span>白天模式</span>';
 }
 
-themeBtn?.addEventListener('click', () => {
+themeBtn?.addEventListener('click', function() {
     isDarkMode = !isDarkMode;
     document.body.classList.toggle('dark-mode');
-    themeBtn.innerHTML = isDarkMode 
-        ? '<i class="fas fa-sun"></i><span>白天模式</span>' 
-        : '<i class="fas fa-moon"></i><span>夜间模式</span>';
+    themeBtn.innerHTML = isDarkMode ? '<i class="fas fa-sun"></i><span>白天模式</span>' : '<i class="fas fa-moon"></i><span>夜间模式</span>';
     localStorage.setItem(STORAGE_KEYS.theme, isDarkMode ? 'dark' : 'light');
 });
 
@@ -628,6 +607,6 @@ function toggleWebSearch() {
 // ==================== 初始化 ====================
 let currentPlot = '';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
     console.log('小说写作助手已加载（纯前端版本）');
 });
