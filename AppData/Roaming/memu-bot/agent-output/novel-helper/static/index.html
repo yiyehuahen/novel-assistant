@@ -403,32 +403,6 @@
                 </div>
             </section>
 
-            <!-- 添加模型弹窗 -->
-            <div id="addModelModal" class="modal-overlay" style="display:none;">
-                <div class="modal-content">
-                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
-                        <h3 style="margin:0;">添加AI模型</h3>
-                        <span style="cursor:pointer;font-size:24px;" onclick="closeModelModal()">&times;</span>
-                    </div>
-                    <div class="setting-group">
-                        <label>模型名称</label>
-                        <input type="text" id="modelName" class="input-box" placeholder="例如：GPT-4">
-                    </div>
-                    <div class="setting-group">
-                        <label>API地址</label>
-                        <input type="text" id="modelApiUrl" class="input-box" placeholder="例如：https://api.example.com">
-                    </div>
-                    <div class="setting-group">
-                        <label>API Key（可选）</label>
-                        <input type="password" id="modelApiKey" class="input-box" placeholder="你的API Key">
-                    </div>
-                    <div style="display:flex;gap:12px;margin-top:20px;">
-                        <button class="btn secondary" onclick="closeModelModal()">取消</button>
-                        <button class="btn primary" onclick="saveModelConfig()">保存</button>
-                    </div>
-                </div>
-            </div>
-
             <!-- 设置页 -->
             <section id="settings" class="page">
                 <h1>⚙️ API 设置</h1>
@@ -527,7 +501,7 @@
     </div>
 
     <script src="websearch.js"></script>
-    <script src="app.js?v=20250225"></script>
+    <script src="app.js"></script>
     <script>
         // 注册 Service Worker
         if ('serviceWorker' in navigator) {

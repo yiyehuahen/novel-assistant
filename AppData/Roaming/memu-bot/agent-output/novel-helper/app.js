@@ -572,11 +572,87 @@ function saveGitHubToken() {
 }
 
 function addModelConfig() {
-    alert('设置功能需要后端API支持，目前仅支持本地随机生成功能');
+    // 显示弹窗
+    document.getElementById('addModelModal').style.display = 'flex';
+}
+
+function closeModelModal() {
+    document.getElementById('addModelModal').style.display = 'none';
+    // 清空输入
+    document.getElementById('modelName').value = '';
+    document.getElementById('modelApiUrl').value = '';
+    document.getElementById('modelApiKey').value = '';
+}
+
+function saveModelConfig() {
+    const name = document.getElementById('modelName')?.value?.trim();
+    const apiUrl = document.getElementById('modelApiUrl')?.value?.trim();
+    const apiKey = document.getElementById('modelApiKey')?.value?.trim();
+    
+    if (!name || !apiUrl) {
+        alert('请填写模型名称和API地址');
+        return;
+    }
+    
+    // 保存到localStorage
+    const models = JSON.parse(localStorage.getItem('novel_models') || '[]');
+    models.push({ name, apiUrl, apiKey });
+    localStorage.setItem('novel_models', JSON.stringify(models));
+    
+    closeModelModal();
+    renderModelsList();
+    alert('模型已保存！');
+}
+
+function renderModelsList() {
+    const models = JSON.parse(localStorage.getItem('novel_models') || '[]');
+    const container = document.getElementById('modelsList');
+    const currentSelect = document.getElementById('currentModel');
+    
+    if (!container) return;
+    
+    if (models.length === 0) {
+        container.innerHTML = '<p style="color:var(--text-muted)">暂无配置模型</p>';
+        return;
+    }
+    
+    // 渲染模型列表
+    container.innerHTML = models.map(function(m, i) {
+        return '<div class="model-item"><span>' + m.name + '</span><button class="delete-btn" onclick="deleteModel(' + i + ')"><i class="fas fa-trash"></i></button></div>';
+    }).join('');
+    
+    // 更新下拉选择
+    if (currentSelect) {
+        currentSelect.innerHTML = models.map(function(m, i) {
+            return '<option value="' + i + '">' + m.name + '</option>';
+        }).join('');
+    }
+}
+
+function deleteModel(index) {
+    if (!confirm('确定删除此模型？')) return;
+    const models = JSON.parse(localStorage.getItem('novel_models') || '[]');
+    models.splice(index, 1);
+    localStorage.setItem('novel_models', JSON.stringify(models));
+    renderModelsList();
 }
 
 function switchModel() {
-    // 暂时不需要操作
+    const idx = document.getElementById('currentModel')?.value;
+    if (idx === undefined || idx === '') return;
+    const models = JSON.parse(localStorage.getItem('novel_models') || '[]');
+    if (models[idx]) {
+        localStorage.setItem('current_model', JSON.stringify(models[idx]));
+    }
+}
+
+function testApi() {
+    const model = JSON.parse(localStorage.getItem('current_model') || 'null');
+    if (!model) {
+        alert('请先选择并保存一个模型');
+        return;
+    }
+    alert('测试功能：API地址=' + model.apiUrl);
 }
 
 function testApi() {
@@ -609,4 +685,5 @@ let currentPlot = '';
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log('小说写作助手已加载（纯前端版本）');
+    renderModelsList();
 });
