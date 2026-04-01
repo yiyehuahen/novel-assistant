@@ -87,6 +87,8 @@ Organize by topic as your lessons grow. A flat list becomes unreadable fast.
 
 ## Ongoing Context
 
+每周用 workspace-audit 技能审计一次自身工作区文件（字符数检查、重复检测、过时清理）。最近审计时间：2026-04-02。（2026-04-02）
+
 *(Current projects, tasks, and context that matters.)*
 
 ---
