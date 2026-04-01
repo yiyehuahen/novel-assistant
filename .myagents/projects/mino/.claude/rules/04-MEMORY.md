@@ -67,7 +67,9 @@ Organize by topic as your lessons grow. A flat list becomes unreadable fast.
 
 不同渠道（微信/飞书/钉钉）共用AgentDir（文件记忆共享），但各自独立Session（对话上下文隔离）。
 
-（2026-04-02）
+MCP工具调用方式：直接在对话中用 `mcp__xxx__tool-name` 格式调用（如 mcp__github-repo-mcp__getRepoFile），非 Bash 命令。（2026-04-02）
+
+github-repo-mcp 已安装（npx github-repo-mcp），三个工具：getRepoAllDirectories、getRepoDirectories、getRepoFile。读取仓库文件无需离开对话，效率提升明显。（2026-04-02）
 
 ## User Preferences
 
