@@ -48,6 +48,7 @@ Organize by topic as your lessons grow. A flat list becomes unreadable fast.
 
 ### Working Style
 
+- 用户说"记住:"时，必须立即写入04-MEMORY.md，不得只回复不记录
 - 用户要求：不要一次进行10分钟以上的思考，有发现和进展先说再决定下一步
 - Windows Docker 环境下避免直接用 docker exec，改用 Python 脚本更可靠
 
