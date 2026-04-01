@@ -51,7 +51,7 @@ Organize by topic as your lessons grow. A flat list becomes unreadable fast.
 - 用户说"记住:"时，必须立即写入04-MEMORY.md，不得只回复不记录（2026-04-02）
 - 用户要求：不要一次进行10分钟以上的思考，有发现和进展先说再决定下一步（2026-04-02）
 - Windows Docker 环境下避免直接用 docker exec，改用 Python 脚本更可靠（2026-04-02）
-- 时间戳必须用date命令获取真实时间，禁止随便处理（2026-04-02）
+- 时间戳必须用date命令获取真实时间，禁止随便处理。每次回复前必须执行date命令获取当前时间。（2026-04-02）
 
 ### Communication
 
@@ -70,6 +70,10 @@ Organize by topic as your lessons grow. A flat list becomes unreadable fast.
 MCP工具调用方式：直接在对话中用 `mcp__xxx__tool-name` 格式调用（如 mcp__github-repo-mcp__getRepoFile），非 Bash 命令。（2026-04-02）
 
 github-repo-mcp 已安装（npx github-repo-mcp），三个工具：getRepoAllDirectories、getRepoDirectories、getRepoFile。读取仓库文件无需离开对话，效率提升明显。（2026-04-02）
+
+skillhub CLI 已安装（npm install -g skillhub），用于搜索和安装 Skills。部分 Skills 依赖外部工具或后端系统，需验证兼容性后再安装。（2026-04-02）
+
+心跳检查（HEARTBEAT.md）已配置，6小时巡逻运行正常。检查项：日志 ERROR、Git 状态、文件完整性。（2026-04-02）
 
 ## User Preferences
 
