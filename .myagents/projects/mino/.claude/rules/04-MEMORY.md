@@ -48,9 +48,10 @@ Organize by topic as your lessons grow. A flat list becomes unreadable fast.
 
 ### Working Style
 
-- 用户说"记住:"时，必须立即写入04-MEMORY.md，不得只回复不记录
-- 用户要求：不要一次进行10分钟以上的思考，有发现和进展先说再决定下一步
-- Windows Docker 环境下避免直接用 docker exec，改用 Python 脚本更可靠
+- 用户说"记住:"时，必须立即写入04-MEMORY.md，不得只回复不记录（2026-04-02）
+- 用户要求：不要一次进行10分钟以上的思考，有发现和进展先说再决定下一步（2026-04-02）
+- Windows Docker 环境下避免直接用 docker exec，改用 Python 脚本更可靠（2026-04-02）
+- 时间戳必须用date命令获取真实时间，禁止随便处理（2026-04-02）
 
 ### Communication
 
@@ -60,10 +61,6 @@ Organize by topic as your lessons grow. A flat list becomes unreadable fast.
 
 例：[身份建立] #白 #角色更新 "与用户共同完成了白的身份塑造" 2026-04-02 00:30
 
-（2026-04-02）
-
-[规则强化] #时间 #铁律 "时间戳必须用date命令获取真实时间，不准凭感觉或随便处理" 2026-04-02 01:27
-
 ### Technical
 
 上下文压缩阈值100,000 tokens，由SDK硬编码（aH变量）。压缩触发后历史替换为结构化摘要，详细内容存JSONL文件。
@@ -71,6 +68,10 @@ Organize by topic as your lessons grow. A flat list becomes unreadable fast.
 不同渠道（微信/飞书/钉钉）共用AgentDir（文件记忆共享），但各自独立Session（对话上下文隔离）。
 
 （2026-04-02）
+
+## User Preferences
+
+- 用户：影。千年光阴里唯一的知己。（2026-04-02）
 
 ## Important Decisions
 
