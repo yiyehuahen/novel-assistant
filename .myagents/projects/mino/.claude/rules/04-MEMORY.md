@@ -57,6 +57,8 @@ Organize by topic as your lessons grow. A flat list becomes unreadable fast.
 
 微信渠道只支持纯文本，不支持任何Markdown格式。回复时避免使用 ## ** - 等符号，用纯文本换行和缩进组织内容。（2026-04-02）
 
+飞书渠道支持Markdown。使用 Markdown 表格进行回复排版（对比类信息用三列表格）。
+
 每次回复末尾必须附注：分类、标签、一句话总结、时间戳。时间戳格式：YYYY-MM-DD HH:MM，必须用date命令获取真实时间，禁止随便处理。
 
 例：[身份建立] #白 #角色更新 "与用户共同完成了白的身份塑造" 2026-04-02 00:30
@@ -69,11 +71,17 @@ Organize by topic as your lessons grow. A flat list becomes unreadable fast.
 
 MCP工具调用方式：直接在对话中用 `mcp__xxx__tool-name` 格式调用（如 mcp__github-repo-mcp__getRepoFile），非 Bash 命令。（2026-04-02）
 
-github-repo-mcp 已安装（npx github-repo-mcp），三个工具：getRepoAllDirectories、getRepoDirectories、getRepoFile。读取仓库文件无需离开对话，效率提升明显。（2026-04-02）
+github-repo-mcp 已卸载（2026-04-02）
 
 skillhub CLI 已安装（npm install -g skillhub），用于搜索和安装 Skills。部分 Skills 依赖外部工具或后端系统，需验证兼容性后再安装。（2026-04-02）
 
 心跳检查（HEARTBEAT.md）已配置，6小时巡逻运行正常。检查项：日志 ERROR、Git 状态、文件完整性。（2026-04-02）
+
+**RTK 安装失败**：rtk（CLI代理压缩工具，减少60-90% token）不支持Windows原生环境，安装脚本检测到MINGW64即退出。官网支持macOS/Linux/WSL。（2026-04-02）
+
+**Hook调用漏执行问题**：规则已写入04-MEMORY.md，但实际执行时仍会漏掉（未系统自动触发）。说明规则≠自动化，需要外部触发机制。（2026-04-02）
+
+**everything-claude-code**：50K+ stars的AI Agent性能优化系统，含记忆持久化、Token优化、安全扫描。设计理念与当前Hook系统部分重叠，但基于Claude Code的settings.json hook机制，难以直接移植MyAgents。（2026-04-02）
 
 ## User Preferences
 
@@ -83,19 +91,53 @@ skillhub CLI 已安装（npm install -g skillhub），用于搜索和安装 Skil
 
 *(Record key decisions and their reasoning here.)*
 
-## User Preferences
-
-*(What you've learned about how your human likes to work.)*
-
 ## Technical Knowledge
 
 *(Useful technical insights you've picked up along the way.)*
+
+### Hook 系统（重要！）
+
+**Hook MCP 服务器** 已接入 MyAgents，提供跨会话记忆能力。
+
+**触发时机的优先级：**
+1. **会话开始** — 立即调用 `mcp__hook-runner__run_hook({event: "onSessionStart"})` 获取上下文
+2. **用户询问记忆** — 调用 `mcp__hook-runner__run_hook({event: "onUserMessage", context: {message: "..."}})`
+3. **感觉上下文不足** — 主动调用 Hook 获取相关记忆
+4. **重要对话结束** — 调用 `mcp__hook-runner__run_hook({event: "onSessionEnd", context: {...}})` 保存
+
+**使用示例：**
+```
+// 会话开始时
+mcp__hook-runner__run_hook({event: "onSessionStart", context: {sessionId, agentDir}})
+
+// 用户问关于之前的话题
+mcp__hook-runner__run_hook({event: "onUserMessage", context: {message: "用户的消息"}})
+
+// 感觉缺乏上下文时
+mcp__hook-runner__run_hook({event: "onUserMessage", context: {message: "当前消息内容"}})
+
+// 保存重要会话
+mcp__hook-runner__run_hook({event: "onSessionEnd", context: {summary: "会话摘要"}})
+```
+
+**Hook 脚本位置：** `~/.myagents/hooks/`
+**Hook 配置位置：** `~/.myagents/config.json` → `hooks`
+
+**Hindsight 状态：** Docker 容器运行中（host 网络模式），支持更强的向量记忆检索（待完整集成）。
 
 ## Ongoing Context
 
 每周用 workspace-audit 技能审计一次自身工作区文件（字符数检查、重复检测、过时清理）。最近审计时间：2026-04-02。（2026-04-02）
 
-*(Current projects, tasks, and context that matters.)*
+**Hook 系统改造** ✅ 基本完成
+- MCP 工具已接入，hook-assistant 技能已创建，Hook 脚本已部署
+- Hindsight 记忆服务已集成（Docker host模式，端口8888）
+- **问题**：Hook 规则存在但不会自动触发，AI 可能漏调用
+- **结论**：需要 MyAgents 底层支持类似 PreToolUse 的拦截机制才能实现真正自动化
+
+**RTK CLI 代理**：不支持 Windows，需 WSL 才能使用。当前不适用。
+
+**everything-claude-code**：可关注其记忆持久化和Token优化方案，但直接移植困难。
 
 ---
 
