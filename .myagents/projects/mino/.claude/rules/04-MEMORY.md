@@ -71,7 +71,7 @@ Organize by topic as your lessons grow. A flat list becomes unreadable fast.
 
 MCP工具调用方式：直接在对话中用 `mcp__xxx__tool-name` 格式调用（如 mcp__github-repo-mcp__getRepoFile），非 Bash 命令。（2026-04-02）
 
-github-repo-mcp 已卸载（2026-04-02）
+github-repo-mcp 已卸载（2026-04-02，已清理）
 
 skillhub CLI 已安装（npm install -g skillhub），用于搜索和安装 Skills。部分 Skills 依赖外部工具或后端系统，需验证兼容性后再安装。（2026-04-02）
 
@@ -135,9 +135,101 @@ mcp__hook-runner__run_hook({event: "onSessionEnd", context: {summary: "会话摘
 - **问题**：Hook 规则存在但不会自动触发，AI 可能漏调用
 - **结论**：需要 MyAgents 底层支持类似 PreToolUse 的拦截机制才能实现真正自动化
 
+**ZeroOne Skill Market**：已安装至 `~/.openclaw/skills/skill-market`
+- 共 34 个技能，支持框架：claude/codex/cursor/openclaw/opencode/qoder
+- OpenHarness 不在支持列表，但脚本可独立运行
+- 仓库：`~/.openclaw/agent-use-skills`
+
 **RTK CLI 代理**：不支持 Windows，需 WSL 才能使用。当前不适用。
 
 **everything-claude-code**：可关注其记忆持久化和Token优化方案，但直接移植困难。
+
+### 微信公众号上传规则
+
+**新版流程（wewrite 模式，2026-04-03）**：
+1. wewrite 生成文章（全自动模式，主题随机）
+2. 不上传草稿箱
+3. 用 wechat-article-typeset 生成预览链接
+
+**旧版流程（wenyan 模式）**：
+- 用户**指定主题** → 用 wenyan-cli（markdown + 主题转换）
+- 用户**未指定主题** → 直接调微信 API 上传原始 HTML
+
+**直接 API 上传 HTML 流程：**
+1. 获取 access_token：`curl "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxd0f5e881877a3212&secret=f78b28f19885ba07a858f6e9be60df3e"`
+2. 上传封面图获取 thumb_media_id：`POST https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=xxx&type=image`
+3. 提取 HTML 内容（title、body），构建 JSON，上传草稿：`POST https://api.weixin.qq.com/cgi-bin/draft/add?access_token=xxx`
+
+（2026-04-03 更新）
+
+### OpenHarness（重要！我的强大分身！）
+
+**定位**：我的强力外接工具，Python 版 Agent Harness，比我更适合处理复杂文件系统任务。
+
+**位置：** `C:\Users\Administrator\workspace\OpenHarness`
+
+**详细能力见**：`memory/topics/openharness.md`（内含37个工具、6个内置Skills、2个MCP等完整清单）
+
+**调用方式：**
+```bash
+cd C:/Users/Administrator/workspace/OpenHarness && unset NO_PROXY && uv run oh -p "指令"
+```
+（.env 已配置 MiniMax API，无需传 key）
+
+**适合交给它的任务（主动提醒用户）：**
+- 复杂代码审查和 Debug（多文件 grep/glob 分析）
+- 规范化 Commit 生成
+- 多文件重构和修改任务
+- GitHub 仓库分析和源码解读（已接 GitHub MCP）
+- 多 Agent 协作任务
+- CI/CD 管道嵌入（json/stream-json 输出）
+
+**我的优势 vs 它**：
+- 我：IM 交互、持久会话、记忆管理、飞书/微信操作
+- 它：工具深度、文件系统操作、GitHub MCP、多 Agent 协同、规范化流程（commit/review/debug/plan）
+
+**限制**：无持久会话，每次独立执行；Windows asyncio bug 不影响结果。
+
+**Skill 加载限制**：`glob("*.md")` 只扫描当前目录不递归，需用符号链接扁平化嵌套结构（2026-04-03）
+
+（2026-04-03）
+
+### 微信公众号文章新流程（重要！）
+
+**工具组合**：wewrite + wechat-article-typeset + wechat-article-preset-preview
+
+**标准流程：**
+1. wewrite 生成文章（全自动模式，跳过 Step 2 选题）
+2. 主题按内容风格随机选择
+3. **不上传草稿箱**
+4. 用 wechat-article-typeset 处理生成预览链接
+
+**文章要求**：
+- 标题下方插入 16:9 手绘简约风格图片
+- 文章末尾不出现相关链接版块
+- 代码块用 \`\`\` 包裹关键指令
+
+**排版主题（wewrite 自有，非 wenyan）**：
+- 墨色系：ink-seri, ink-bamboo（适合深度长文）
+- 暖色系：coral-warm, amber-paper, cream-apricot, sakura-soft
+- 科技感：teal-fresh, smartblue, mist-blue
+- 简约系：minimal-bw, dark-calm
+
+（2026-04-03）
+
+### ZeroOne Skill Market
+
+**安装状态**：已安装至 `~/.openharness/skills/skill-market`（OpenHarness）和 `~/.openclaw/skills/skill-market`（OpenClaw）
+
+**支持框架**：claude/codex/cursor/openclaw/opencode/qoder
+- **注意**：openharness 框架不被支持，使用 openclaw 框架代替
+
+**已安装 Skills**：
+- minimax-skills（16个子技能，通过符号链接解决嵌套结构问题）
+- wewrite、wechat-article-typeset、wechat-article-preset-preview
+- skill-creator、humanizer-zh、playwright-skill
+
+（2026-04-03）
 
 ---
 
