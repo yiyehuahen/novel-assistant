@@ -146,11 +146,23 @@ mcp__hook-runner__run_hook({event: "onSessionEnd", context: {summary: "会话摘
 
 **Firecrawl MCP 状态**：已安装启用，需 API key（500免费credits一次性）
 
-### SearXNG 本地元搜索（研究中）
+### SearXNG 本地元搜索
 
-开源元搜索，聚合245个搜索后端，自托管。
-定位：Layer 3补充，非替代。
-需 Docker，配置复杂，当前不优先。（2026-04-04）
+**状态**：✅ 已部署（2026-04-04）
+
+开源元搜索，聚合245+搜索后端，零跟踪，完全私有。
+
+**部署位置**：`~/.myagents/searxng/`
+
+**Docker 容器**：
+- SearXNG：`localhost:8888`
+- Redis：`localhost:6379`
+
+**API**：`curl "http://localhost:8888/search?q=xxx&format=json"`
+
+**定位**：Layer 3 补充搜索，本地快速聚合结果。
+
+（2026-04-04）
 
 ### 工具超时规范（2026-04-04）
 
