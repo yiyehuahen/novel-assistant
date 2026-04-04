@@ -177,17 +177,20 @@ ls ~/.myagents/cron_runs/
 | Git 操作 | 30-90s |
 | MCP 网络请求 | 60-90s |
 | 内置工具（Read/Write） | 30s |
+| Agent 子进程（oh） | 60-300s |
 
-### 超时错误处理
+### 重试策略
 
-超时发生后必须告知用户：
-```
-[超时] 工具名 - 任务描述
-预期耗时: Xs
-实际耗时: >Xs
-原因: (判断)
-建议: (重试/拆分/延长)
-```
+**可重试**（幂等）：Read、Grep、ddg-search、git status
+**不可重试**：Write、Edit、rm、trash、定时任务触发
+
+重试：等待3s，最多2次。
+
+### MCP 超时配置
+
+在 `~/.myagents/config.json` → `mcpServers` → 每个 server 的 `timeout` 字段。
+
+**注**：完整配置示例和重试策略见 `tools-timeout-reference.md`。
 
 ### 工具调用前
 
