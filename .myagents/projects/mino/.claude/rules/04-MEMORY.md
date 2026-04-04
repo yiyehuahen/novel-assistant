@@ -133,6 +133,25 @@ mcp__hook-runner__run_hook({event: "onSessionEnd", context: {summary: "会话摘
 
 **原则**：能用 `gh` / API 解决就不用浏览器，浏览器 token 消耗高、速度慢。（2026-04-04）
 
+### 四层搜索架构（2026-04-04）
+
+| Layer | 工具 | 用途 | 状态 |
+|-------|------|------|------|
+| 1 | Tavily | 通用网络搜索，AI友好 | ✅ 已配置API key |
+| 2 | gh CLI | GitHub专用搜索/获取 | ✅ 已安装认证 |
+| 3 | Firecrawl | 网页内容提取/结构化 | ⚠️ 需API key（500免费credits） |
+| 4 | Playwright | JS渲染/登录态/最后选择 | ✅ 可用 |
+
+**工具优先级**：Tavily → gh → Firecrawl → Playwright
+
+**Firecrawl MCP 状态**：已安装启用，需 API key（500免费credits一次性）
+
+### SearXNG 本地元搜索（研究中）
+
+开源元搜索，聚合245个搜索后端，自托管。
+定位：Layer 3补充，非替代。
+需 Docker，配置复杂，当前不优先。（2026-04-04）
+
 ### 工具超时规范（2026-04-04）
 
 **核心原则：所有工具调用必须显式设置超时，不存在"不设超时"的选项。**
