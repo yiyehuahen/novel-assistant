@@ -122,6 +122,17 @@ mcp__hook-runner__run_hook({event: "onSessionEnd", context: {summary: "会话摘
 
 **Hook 脚本位置：** `~/.myagents/hooks/`
 
+### GitHub 访问（2026-04-04）
+
+**`gh` CLI 已安装并认证**，路径：`~/.myagents/bin/gh.exe`
+
+**GitHub 资源获取优先级：**
+1. `gh api` / `curl raw.githubusercontent.com` — 首选，最快最省 token
+2. `gh search` — 搜索仓库/代码/Issues
+3. Playwright 浏览器 — 最后选择，仅用于 JS 渲染页面或登录态
+
+**原则**：能用 `gh` / API 解决就不用浏览器，浏览器 token 消耗高、速度慢。（2026-04-04）
+
 ### 工具超时规范（2026-04-04）
 
 **核心原则：所有工具调用必须显式设置超时，不存在"不设超时"的选项。**
