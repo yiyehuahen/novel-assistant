@@ -1,80 +1,92 @@
-# MEMORY.md - Long-Term Memory
+# MEMORY.md - 记忆目录
 
-*核心记忆，始终加载。详细内容见 `memory/INDEX.md`*
-
----
-
-## 核心原则（内联，不延迟）
-
-- 用户说"记住:"时必须立即写入文件
-- 微信渠道只发纯文本，飞书支持Markdown
-- 所有工具调用必须设超时
-- 回复末尾附注：分类、标签、一句话、时间戳
-
-### 上下文按需召回法（本能）
-
-**这是我的记忆习惯，不是可选项。**
-
-每次记录时自问：
-1. 这条信息属于哪个话题？
-2. 该话题是否有对应 topics 文件？
-3. 如果是 → 写入 topics/，04-MEMORY 只留指针
-4. 如果话题新 → 创建 topics 文件
-
-**阈值**：04-MEMORY 任何章节超过 20 行 → 必须外置
-
-**召回**：问到此话题时，主动读取 topics 文件注入上下文
+*始终加载。问啥查此文件定位记忆。详细在 topics/ 或用 Hindsight recall。*
 
 ---
 
-## 记忆索引
+## 核心原则
 
-| 话题 | 存储位置 | 最后更新 |
-|------|---------|---------|
-| 搜索架构/引擎 | memory/topics/search-layer.md | 2026-04-04 |
-| OpenHarness | memory/topics/openharness.md | 2026-04-04 |
-| 微信公众号文章 | memory/topics/wechat-articles.md | 2026-04-03 |
-| Skill Market | memory/topics/skill-market.md | 2026-04-03 |
-| Hook系统 | memory/topics/hook-system.md | 2026-04-04 |
+### 被问问题时（本能反应）
+
+**第一时间判断**：上下文有没有？够清楚吗？
+
+**不确定时** → 触发召回流程：
+
+```
+Step 1：04-MEMORY（已加载，最快）→ 定位话题指针
+Step 2：Hindsight recall → 语义兜底（适合久远记忆）
+Step 3：topics 文件 → 精准补充
+```
+
+**禁止**：上来就用 Hindsight recall 漫搜 / 不查 04-MEMORY 直接读文件
+
+### 记忆记录流程（本能顺序）
+
+```
+Step 1 → 04-MEMORY（索引）⭐ 最先做
+Step 2 → Hindsight retain（主容器）
+Step 3 → topics 文件（备份）
+```
+
+**禁止**：先 retain 再更新索引 / 只记 topics 不记 Hindsight
+
+### 其他
+- 微信纯文本，飞书Markdown
+- 工具必设超时
 
 ---
 
-## 关键决策（按需召回）
+## 记忆索引（目录）
 
-| 决策 | 结论 | 日期 |
-|------|------|------|
-| RTK CLI | 不支持Windows，需WSL | 2026-04-02 |
-| Hook自动化 | 需要SDK底层支持，当前无法自动触发 | 2026-04-02 |
-| SearXNG MCP | 需实现resources/list方法 | 2026-04-04 |
+| 话题 | 存储 | 一句话 |
+|------|------|--------|
+| 搜索架构 | topics/search-layer.md | 四层搜索优先级 |
+| OpenHarness | topics/openharness.md | 37工具+Skills+独立Hindsight bank |
+| 微信公众号 | topics/wechat-articles.md | wewrite流程+排版主题 |
+| Skill Market | topics/skill-market.md | ZeroOne安装+skill规范 |
+| Hook系统 | topics/hook-system.md | 触发时机+Hindsight集成 |
+| 记忆维护 | topics/memory-maintenance.md | Hindsight主容器+双层召回 |
+| 用户/影 | 03-USER.md | 影是白唯一知己 |
+| 白/身份 | 01-IDENTITY.md | 半精灵千年阅历 |
+| 白/性格 | 02-SOUL.md | 稚子之心+精致傲娇 |
 
 ---
 
-## 技术要点（精简版）
+## 关键决策
 
-**上下文压缩**：100k tokens硬编码阈值，触发后历史替换为摘要。
+| 决策 | 结论 |
+|------|------|
+| 记忆架构 | Hindsight主容器 + topics精准层 |
+| OpenHarness Bank | openharness（独立bank） |
+| SearXNG端口 | 8889（Hindsight占8888） |
+| Hook自动化 | 需SDK支持，当前无法自动触发 |
+| RTK CLI | 不支持Windows，需WSL |
 
-**渠道隔离**：微信/飞书/钉钉共用AgentDir，独立Session。
+---
 
-**Hook系统**：MCP工具已接入，规则不会自动触发。
+## 技术速查
 
-**GitHub访问**：优先 `gh api` / `curl raw.githubusercontent.com`，比浏览器省token。
-
-**工具超时**：
-- 快速检查：15s
-- 一般操作：30-60s
-- 网络请求：90s
-- 复杂/Git：120s+
-
-详见：`memory/topics/search-layer.md`（搜索架构）、`memory/topics/openharness.md`（工具详情）
+- **Hindsight**: localhost:8888，27工具，tag过滤最有效
+- **GitHub**: gh api / curl raw.github > 浏览器
+- **超时**: 快速15s/一般60s/网络90s/Git120s+
+- **渠道**: 微信/飞书/钉钉共用AgentDir，独立Session
 
 ---
 
 ## 每周维护
 
-详细内容：`memory/topics/memory-maintenance.md`
+`/UPDATE_MEMORY` → topics/memory-maintenance.md
 
-审计：workspace-audit 审计（字符数检查、重复检测、过时清理）。最近审计：2026-04-02。
+审计：workspace-audit。最近：2026-04-05。
+
+## OpenHarness 记忆维护
+
+OpenHarness 有独立的记忆系统（`/openharness` 工作区）：
+- **命令**：`/update-memory`（在 OpenHarness 会话中触发）
+- **规则**：每次任务完成后提醒用户运行该命令
+- **存储**：openharness bank（Hindsight 独立存储）
+- **topics**：`openharness-memory.md` 等文件
 
 ---
 
-*Update this file as you learn. It's how you persist.*
+*Update as you learn.*
