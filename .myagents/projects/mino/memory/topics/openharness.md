@@ -290,4 +290,24 @@ for dir in */; do name="${dir%/}"; ln -sf "$PWD/$dir/SKILL.md" "../${name}.md"; 
 
 **IP 白名单问题**：微信 API 需要出口 IP 在白名单内，当前出口 IP 可能不固定
 
-最后更新：2026-04-03
+## 工具超时治理同步（2026-04-04）
+
+已同步超时治理方案至 OpenHarness CLAUDE.md（提交 `f11cf70`）。
+
+**新增内容**：
+1. 工具超时表（Bash/Git/内置工具，6档）
+2. 重试策略（幂等判断）
+3. 超时错误处理标准格式
+4. 哨兵模式说明（按需使用后台+等待）
+
+**OpenHarness 超时参考**：
+| 工具类型 | 超时 |
+|----------|------|
+| 快速检查（ls/echo/date） | 15s |
+| 一般操作（grep/wc） | 30s |
+| 搜索（rg/find） | 60s |
+| 网络请求（curl/ddg-search） | 90s |
+| Git push/pull | 90s |
+| Git clone | 300s+ |
+
+最后更新：2026-04-04

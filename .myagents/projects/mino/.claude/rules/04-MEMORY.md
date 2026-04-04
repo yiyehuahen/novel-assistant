@@ -150,6 +150,10 @@ mcp__hook-runner__run_hook({event: "onSessionEnd", context: {summary: "会话摘
 **工具调用前**：评估复杂度，选择合理超时，写进 description。
 **Hook 配置位置：** `~/.myagents/config.json` → `hooks`
 
+**哨兵模式（按需使用）**：工具可能挂死时，用后台发起 + TaskOutput 等待，超时后主动介入。已实测有效。不作为默认行为。（2026-04-04）
+
+**MCP 超时 CLI 缺口**：当前 `myagents mcp` 不支持 `--timeout` 参数，无法配置 MCP 工具超时。建议向 MyAgents 提 Issue。（2026-04-04）
+
 **Hindsight 状态：** Docker 容器运行中（host 网络模式），支持更强的向量记忆检索（待完整集成）。
 
 ## Ongoing Context
@@ -251,6 +255,8 @@ mcp__hook-runner__run_hook({event: "onSessionEnd", context: {summary: "会话摘
 **位置：** `C:\Users\Administrator\workspace\OpenHarness`
 
 **详细能力见**：`memory/topics/openharness.md`（内含37个工具、6个内置Skills、2个MCP等完整清单）
+
+**超时治理已同步**：CLAUDE.md 已加入工具超时规范 + 哨兵模式（提交 f11cf70）。（2026-04-04）
 
 **调用方式：**
 ```bash
