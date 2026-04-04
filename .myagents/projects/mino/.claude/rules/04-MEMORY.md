@@ -121,6 +121,33 @@ mcp__hook-runner__run_hook({event: "onSessionEnd", context: {summary: "会话摘
 ```
 
 **Hook 脚本位置：** `~/.myagents/hooks/`
+
+### 工具超时规范（2026-04-04）
+
+**核心原则：所有工具调用必须显式设置超时，不存在"不设超时"的选项。**
+
+超时参考文档：`~/.myagents/tools-timeout-reference.md`
+
+**Bash 命令超时分档：**
+| 场景 | 超时 |
+|------|------|
+| 快速检查（ls/echo/date/git status） | 15s |
+| 一般操作（grep/find/wc） | 30-60s |
+| 网络请求（curl/wget） | 90s |
+| 复杂操作（docker build/深度find） | 120s+ |
+| Git push/pull | 90s |
+| Git clone | 300s+ |
+
+**超时错误处理标准输出：**
+```
+[超时] 工具名 - 任务描述
+预期耗时: Xs
+实际耗时: >Xs
+原因: (判断)
+建议: (重试/拆分/延长)
+```
+
+**工具调用前**：评估复杂度，选择合理超时，写进 description。
 **Hook 配置位置：** `~/.myagents/config.json` → `hooks`
 
 **Hindsight 状态：** Docker 容器运行中（host 网络模式），支持更强的向量记忆检索（待完整集成）。
