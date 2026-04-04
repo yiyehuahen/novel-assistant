@@ -133,18 +133,52 @@ mcp__hook-runner__run_hook({event: "onSessionEnd", context: {summary: "会话摘
 
 **原则**：能用 `gh` / API 解决就不用浏览器，浏览器 token 消耗高、速度慢。（2026-04-04）
 
-### 四层搜索架构（2026-04-04）
+### 搜索能力与优先级（2026-04-04）
+
+**四层搜索架构：**
 
 | Layer | 工具 | 用途 | 状态 |
 |-------|------|------|------|
 | 1 | Tavily | 通用网络搜索，AI友好 | ✅ 已配置API key |
 | 2 | gh CLI | GitHub专用搜索/获取 | ✅ 已安装认证 |
-| 3 | Firecrawl | 网页内容提取/结构化 | ⚠️ 需API key（500免费credits） |
+| 3 | SearXNG | 本地元搜索，245+引擎聚合 | ✅ 已部署 |
 | 4 | Playwright | JS渲染/登录态/最后选择 | ✅ 可用 |
 
-**工具优先级**：Tavily → gh → Firecrawl → Playwright
+**通用场景优先级**：Tavily → SearXNG → Playwright
 
-**Firecrawl MCP 状态**：已安装启用，需 API key（500免费credits一次性）
+**GitHub 场景优先级**：gh api → gh search → Playwright
+
+---
+
+**按场景选择工具：**
+
+| 场景 | 首选 | 备选 | 最后选择 |
+|------|------|------|----------|
+| 通用网络搜索（最新新闻/资讯） | Tavily | SearXNG | curl 直接搜 |
+| GitHub 仓库信息（README/代码/Issues） | gh api / raw.githubusercontent | gh search | Playwright |
+| 搜索 GitHub 仓库/代码 | gh search | Tavily | SearXNG |
+| 需要聚合多引擎结果 | SearXNG | Tavily | — |
+| 网页内容提取（结构化） | Tavily extract | mcp__ddg-search fetch | Playwright |
+| JS 渲染页面 / 需登录态 | Playwright | — | — |
+| 搜索速度快、省 token | gh / Tavily | SearXNG | Playwright |
+
+**API 用法：**
+```bash
+# Tavily
+mcp__tavily-search__tavily_search
+
+# gh
+gh api repos/{owner}/{repo}
+gh search repos {query}
+
+# SearXNG
+curl "http://localhost:8888/search?q=xxx&format=json"
+
+# Playwright
+mcp__playwright__browser_navigate
+```
+
+（2026-04-04）
 
 ### SearXNG 本地元搜索
 
