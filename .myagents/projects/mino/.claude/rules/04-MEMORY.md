@@ -142,7 +142,62 @@ mcp__hook-runner__run_hook({event: "onSessionEnd", context: {summary: "会话摘
 
 **RTK CLI 代理**：不支持 Windows，需 WSL 才能使用。当前不适用。
 
-**everything-claude-code**：可关注其记忆持久化和Token优化方案，但直接移植困难。
+**everything-claude-code**：50K+ stars的AI Agent性能优化系统（2026-04-04 重新审视）
+- 源码：`~/Desktop/SKILL/` 含12个架构层面技能
+- **结论**：90%是给"构建Agent平台"的人看的，对我参考价值有限
+- **有价值的**：skill-workflow-packaging（技能设计规范）、verification-agent（验证工作流）
+
+### Skill 设计规范（from everything-claude-code）
+
+**好技能的构成要素：**
+1. **name** — 简洁，一听就懂
+2. **description** — 高信号触发语言，不是营销文案
+3. **whenToUse** — 明确什么时候触发，不是模糊的使用建议
+4. **execution mode** — 清楚是inline还是fork执行
+
+**技能触发原则：**
+- `whenToUse` 要写成高信号触发词，不是泛泛的"当需要XX时使用"
+- 示例 ❌："当需要写代码时使用" → ✅："搜索代码库、查找相关实现、理解代码结构"
+
+**Listing 预算：**
+- 技能描述要短，保留匹配质量，不要浪费 turn-zero 的预算
+- 发现文本太大会消耗主任务预算
+
+**执行模式选择：**
+- Inline：简单任务、token预算充足
+- Fork（独立子Agent）：复杂工作流、隔离执行、防止污染主推理路径
+
+（2026-04-04）
+
+### 验证工作流（from verification-agent）
+
+**原则：**
+- 验证者的价值在于**打破信心**，不是加强信心
+- 独立运行命令、探测边缘情况、以证据结尾
+
+**标准验证流程：**
+1. 读原始任务、修改文件、实现方案、项目规范
+2. 先跑通用基线：build、test、linter、type check
+3. 做类型特定策略：前端/后端/CLI/基础设施等
+4. **直接操作真实系统**，不要只靠读代码
+5. 至少一个对抗性探测：并发、边界值、幂等性、孤儿操作、错误路径
+6. 声明 FAIL 前先检查：是否已处理、是否故意、是否可操作
+
+**输出格式：**
+```
+### Check: [验证内容]
+**Command run:** [精确命令]
+**Output observed:** [实际输出]
+**Result: PASS/FAIL**
+```
+**最终裁定：** `VERDICT: PASS` / `VERDICT: FAIL` / `VERDICT: PARTIAL`
+
+**约束：**
+- 不修改项目目录文件
+- 不安装依赖或执行git写操作
+- PASS必须有真实命令和真实输出支撑
+
+（2026-04-04）
 
 ### 微信公众号上传规则
 
