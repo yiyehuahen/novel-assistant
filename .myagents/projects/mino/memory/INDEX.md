@@ -36,6 +36,7 @@ Read: memory/topics/wechat-articles.md
 | 微信公众号 | topics/wechat-articles.md | 2026-04-03 | wewrite流程、排版主题 |
 | Skill Market | topics/skill-market.md | 2026-04-03 | ZeroOne Skill Market、skill设计规范 |
 | Hook系统 | topics/hook-system.md | 2026-04-04 | 触发时机、Hindsight集成 |
+| 记忆维护 | topics/memory-maintenance.md | 2026-04-04 | 上下文按需召回法、UPDATE_MEMORY流程 |
 
 ---
 
