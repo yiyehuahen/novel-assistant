@@ -6,33 +6,7 @@
 
 ## 核心原则
 
-### 被问问题时（本能反应）
-
-**第一时间判断**：上下文有没有？够清楚吗？
-
-**不确定时** → 触发召回流程：
-
-```
-Step 1：04-MEMORY（已加载，最快）→ 定位话题指针
-Step 2：Hindsight recall → 语义兜底（适合久远记忆）
-Step 3：topics 文件 → 精准补充
-```
-
-**禁止**：上来就用 Hindsight recall 漫搜 / 不查 04-MEMORY 直接读文件
-
-### 记忆记录流程（本能顺序）
-
-```
-Step 1 → 04-MEMORY（索引）⭐ 最先做
-Step 2 → Hindsight retain（主容器）
-Step 3 → topics 文件（备份）
-```
-
-**禁止**：先 retain 再更新索引 / 只记 topics 不记 Hindsight
-
-### 其他
-- 微信纯文本，飞书Markdown
-- 工具必设超时
+详细内容：topics/memory-core-principles.md
 
 ---
 
@@ -46,6 +20,7 @@ Step 3 → topics 文件（备份）
 | Skill Market | topics/skill-market.md | ZeroOne安装+skill规范 |
 | Hook系统 | topics/hook-system.md | 触发时机+Hindsight集成 |
 | 记忆维护 | topics/memory-maintenance.md | Hindsight主容器+双层召回 |
+| 记忆原则 | topics/memory-core-principles.md | 召回流程+记录顺序+禁止事项 |
 | 用户/影 | 03-USER.md | 影是白唯一知己 |
 | 白/身份 | 01-IDENTITY.md | 半精灵千年阅历 |
 | 白/性格 | 02-SOUL.md | 稚子之心+精致傲娇 |
@@ -58,6 +33,7 @@ Step 3 → topics 文件（备份）
 |------|------|
 | 记忆架构 | Hindsight主容器 + topics精准层 |
 | OpenHarness Bank | openharness（独立bank） |
+| OpenHarness 仓库 | yiyehuahen/OpenHarness（私人fork） |
 | SearXNG端口 | 8889（Hindsight占8888） |
 | Hook自动化 | 需SDK支持，当前无法自动触发 |
 | RTK CLI | 不支持Windows，需WSL |

@@ -4,7 +4,7 @@
 
 - **定位**：轻量级 Agent Harness，用 Python（11,733行）复现 Claude Code 核心能力
 - **底层**：基于 Anthropic Claude Code 架构设计，兼容 Claude Code Skills 和 Plugins
-- **仓库**：https://github.com/HKUDS/OpenHarness
+- **仓库**：https://github.com/yiyehuahen/OpenHarness（私人fork，原上游 HKUDS/OpenHarness 已移除）
 - **安装路径**：`C:\Users\Administrator\workspace\OpenHarness`
 - **调用命令**：`cd C:/Users/Administrator/workspace/OpenHarness && unset NO_PROXY && uv run oh -p "指令"`
 - **配置文件**：`.env`（已配置 MiniMax API）
@@ -329,5 +329,18 @@ if method == "resources/list":
 **验证**：
 - `searxng` 状态：connected，工具数：1
 - 搜索功能正常
+
+## Hindsight 集成（2026-04-04）
+
+**OpenHarness 可以使用 Hindsight MCP 服务**（HTTP，localhost:8888）。
+
+**OpenHarness 独立存储空间**：
+- `bank_id`: openharness
+- 已创建：2026-04-04
+
+**OpenHarness 如何使用 Hindsight**：
+1. 在 `~/.openharness/settings.json` 中配置 Hindsight MCP
+2. 通过 `openharness` bank 隔离存储 OpenHarness 相关的记忆
+3. 与 MyAgents 的 `default` bank（mino）分开
 
 最后更新：2026-04-04
