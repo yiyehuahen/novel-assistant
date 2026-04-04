@@ -1,71 +1,52 @@
 ---
 name: ccc
-description: "This skill should be used when code search is needed (whether explicitly requested or as part of completing a task), when indexing the codebase after changes, or when the user asks about ccc, cocoindex-code, or the codebase index. Trigger phrases include 'search the codebase', 'find code related to', 'update the index', 'ccc', 'cocoindex-code'."
+description: "语义代码搜索。当需要搜索代码库、查找相关实现、理解代码结构、或用户提到'ccc'、'cocoindex'时触发。"
 ---
 
-# ccc - Semantic Code Search & Indexing
+# ccc - 语义代码搜索
 
-`ccc` is the CLI for CocoIndex Code, providing semantic search over the current codebase and index management.
+基于 AST 的轻量代码搜索引擎，节省 70% token。
 
-## Ownership
+## 触发场景
 
-The agent owns the `ccc` lifecycle for the current project — initialization, indexing, and searching. Do not ask the user to perform these steps; handle them automatically.
+- 用户说"搜一下 XXX 相关代码"
+- 用户说"查找 XXX 实现"
+- 用户提到"ccc"、"cocoindex"
+- 需要理解代码库结构时
 
-- **Initialization**: If `ccc search` or `ccc index` fails with an initialization error (e.g., "Not in an initialized project directory"), run `ccc init` from the project root directory, then `ccc index` to build the index, then retry the original command.
-- **Index freshness**: Keep the index up to date by running `ccc index` (or `ccc search --refresh`) when the index may be stale — e.g., at the start of a session, or after making significant code changes (new files, refactors, renamed modules). There is no need to re-index between consecutive searches if no code was changed in between.
-- **Installation**: If `ccc` itself is not found (command not found), refer to [management.md](references/management.md) for installation instructions and inform the user.
+## 使用方式
 
-## Searching the Codebase
-
-To perform a semantic search:
-
+### 初始化（如需要）
 ```bash
-ccc search <query terms>
+ccc init        # 初始化项目索引
+ccc index       # 构建索引
 ```
 
-The query should describe the concept, functionality, or behavior to find, not exact code syntax. For example:
-
+### 搜索
 ```bash
-ccc search database connection pooling
-ccc search user authentication flow
-ccc search error handling retry logic
+ccc search <概念描述>
 ```
 
-### Filtering Results
-
-- **By language** (`--lang`, repeatable): restrict results to specific languages.
-
-  ```bash
-  ccc search --lang python --lang markdown database schema
-  ```
-
-- **By path** (`--path`): restrict results to a glob pattern relative to project root. If omitted, defaults to the current working directory (only results under that subdirectory are returned).
-
-  ```bash
-  ccc search --path 'src/api/*' request validation
-  ```
-
-### Pagination
-
-Results default to the first page. To retrieve additional results:
-
+**示例：**
 ```bash
-ccc search --offset 5 --limit 5 database schema
+ccc search 数据库连接池
+ccc search 用户认证流程
+ccc search 错误处理重试逻辑
 ```
 
-If all returned results look relevant, use `--offset` to fetch the next page — there are likely more useful matches beyond the first page.
+### 过滤
+```bash
+ccc search --lang python --lang markdown 数据库
+ccc search --path 'src/api/*' 请求验证
+```
 
-### Working with Search Results
+## 输出
 
-Search results include file paths and line ranges. To explore a result in more detail:
+搜索结果包含文件路径和行号范围，直接读取相关代码。
 
-- Use the editor's built-in file reading capabilities (e.g., the `Read` tool) to load the matched file and read lines around the returned range for full context.
-- When working in a terminal without a file-reading tool, use `sed -n '<start>,<end>p' <file>` to extract a specific line range.
+## 管理
 
-## Settings
-
-To view or edit embedding model configuration, include/exclude patterns, or language overrides, see [settings.md](references/settings.md).
-
-## Management & Troubleshooting
-
-For installation, initialization, daemon management, troubleshooting, and cleanup commands, see [management.md](references/management.md).
+如提示未安装：
+```bash
+pip install cocoindex-code
+```
