@@ -171,7 +171,10 @@ mcp__tavily-search__tavily_search
 gh api repos/{owner}/{repo}
 gh search repos {query}
 
-# SearXNG
+# SearXNG MCP（推荐）
+mcp__searxng__search({"query": "xxx", "limit": 10})
+
+# SearXNG REST
 curl "http://localhost:8888/search?q=xxx&format=json"
 
 # Playwright
@@ -182,7 +185,7 @@ mcp__playwright__browser_navigate
 
 ### SearXNG 本地元搜索
 
-**状态**：✅ 已部署（2026-04-04）
+**状态**：✅ 已部署 + MCP封装（2026-04-04）
 
 开源元搜索，聚合245+搜索后端，零跟踪，完全私有。
 
@@ -192,7 +195,11 @@ mcp__playwright__browser_navigate
 - SearXNG：`localhost:8888`
 - Redis：`localhost:6379`
 
-**API**：`curl "http://localhost:8888/search?q=xxx&format=json"`
+**MCP 工具**：
+- MyAgents：`mcp__searxng__search`
+- OpenHarness：已注册到 `~/.openharness/settings.json`
+
+**MCP Server 脚本**：`~/.myagents/bin/searxng-mcp.py`
 
 **定位**：Layer 3 补充搜索，本地快速聚合结果。
 
