@@ -310,4 +310,24 @@ for dir in */; do name="${dir%/}"; ln -sf "$PWD/$dir/SKILL.md" "../${name}.md"; 
 | Git push/pull | 90s |
 | Git clone | 300s+ |
 
+## SearXNG MCP 修复（2026-04-04）
+
+**问题**：SearXNG MCP 连接失败，报错 `Method not found: resources/list`
+
+**原因**：OpenHarness 的 MCP 客户端在初始化时会调用 `resources/list` 获取资源列表，但 searxng-mcp.py 只实现了 `tools/list` 和 `tools/call`。
+
+**修复**：在 `~/.myagents/bin/searxng-mcp.py` 中添加 `resources/list` 处理器：
+```python
+if method == "resources/list":
+    return {
+        "jsonrpc": "2.0",
+        "id": req_id,
+        "result": {"resources": []}
+    }
+```
+
+**验证**：
+- `searxng` 状态：connected，工具数：1
+- 搜索功能正常
+
 最后更新：2026-04-04
