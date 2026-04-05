@@ -24,6 +24,7 @@
 | 用户/影 | 03-USER.md | 影是白唯一知己 |
 | 白/身份 | 01-IDENTITY.md | 半精灵千年阅历 |
 | 白/性格 | 02-SOUL.md | 稚子之心+精致傲娇 |
+| 白/Obsidian知识库 | Obsidian Vault | 技能目录.canvas+工具清单+按需加载 |
 
 ---
 
@@ -31,7 +32,7 @@
 
 | 决策 | 结论 |
 |------|------|
-| 记忆架构 | Hindsight主容器 + topics精准层 |
+| 记忆架构 | Hindsight主容器 + topics精准层 + Obsidian知识库 |
 | OpenHarness Bank | openharness（独立bank） |
 | OpenHarness 仓库 | yiyehuahen/OpenHarness（私人fork） |
 | SearXNG端口 | 8889（Hindsight占8888） |
@@ -46,6 +47,7 @@
 - **GitHub**: gh api / curl raw.github > 浏览器
 - **超时**: 快速15s/一般60s/网络90s/Git120s+
 - **渠道**: 微信/飞书/钉钉共用AgentDir，独立Session
+- **Obsidian**: `C:\Users\Administrator\Documents\Obsidian Vault\`，CLI在 `~/.local/bin/obsidian`
 
 ---
 
@@ -62,6 +64,15 @@ OpenHarness 有独立的记忆系统（`/openharness` 工作区）：
 - **规则**：每次任务完成后提醒用户运行该命令
 - **存储**：openharness bank（Hindsight 独立存储）
 - **topics**：`openharness-memory.md` 等文件
+
+## Obsidian 知识库
+
+白在 Obsidian 中的专属知识库（`C:\Users\Administrator\Documents\Obsidian Vault\`）：
+- **入口**：`00-知识索引/知识入口.md`
+- **技能地图**：`00-知识索引/技能目录.canvas`
+- **使用方式**：遇到新任务时先搜索 Obsidian，按需加载
+- **召回流程**：04-MEMORY定位 → Obsidian搜索 → Hindsight recall → topics
+- **Obsidian CLI**：`~/.local/bin/obsidian`（wrapper脚本）
 
 ---
 
