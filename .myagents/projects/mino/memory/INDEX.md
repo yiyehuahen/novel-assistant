@@ -14,6 +14,7 @@
 | Skill Market | topics/skill-market.md | 2026-04-03 | ZeroOne Skill Market、skill设计规范 |
 | Hook系统 | topics/hook-system.md | 2026-04-04 | 触发时机、Hindsight集成、27工具详解 |
 | 记忆维护 | topics/memory-maintenance.md | 2026-04-04 | Hindsight主容器架构、双层召回流程 |
+| SearXNG修复 | topics/searxng-fix.md | 2026-04-05 | shebang修复+哨兵超时规范 |
 
 ---
 
@@ -21,6 +22,7 @@
 
 | 日期 | 文件 |
 |------|------|
+| 2026-04-05 | memory/2026-04-05.md |
 | 2026-04-04 | memory/2026-04-04.md |
 | 2026-04-02 | memory/2026-04-02.md |
 

@@ -17,9 +17,11 @@
 | 搜索架构 | topics/search-layer.md | 四层搜索优先级 |
 | OpenHarness | topics/openharness.md | 37工具+Skills+独立Hindsight bank |
 | 微信公众号 | topics/wechat-articles.md | wewrite流程+排版主题 |
+| 飞书 MCP | topics/feishu-mcp.md | 文档创建+公开链接+API规范 |
 | Skill Market | topics/skill-market.md | ZeroOne安装+skill规范 |
 | Hook系统 | topics/hook-system.md | 触发时机+Hindsight集成 |
 | 记忆维护 | topics/memory-maintenance.md | Hindsight主容器+双层召回 |
+| SearXNG修复 | topics/searxng-fix.md | shebang修复+6秒哨兵超时 |
 | 记忆原则 | topics/memory-core-principles.md | 召回流程+记录顺序+禁止事项 |
 | 用户/影 | 03-USER.md | 影是白唯一知己 |
 | 白/身份 | 01-IDENTITY.md | 半精灵千年阅历 |
@@ -55,7 +57,7 @@
 
 `/UPDATE_MEMORY` → topics/memory-maintenance.md
 
-审计：workspace-audit。最近：2026-04-05。
+审计：workspace-audit。最近：2026-04-06。
 
 ## OpenHarness 记忆维护
 

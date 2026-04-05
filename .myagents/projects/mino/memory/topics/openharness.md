@@ -343,4 +343,57 @@ if method == "resources/list":
 2. 通过 `openharness` bank 隔离存储 OpenHarness 相关的记忆
 3. 与 MyAgents 的 `default` bank（mino）分开
 
-最后更新：2026-04-04
+## Multica AGENTS.md 参考（2026-04-05）
+
+来源：https://github.com/multica-ai/multica（AI-native 任务管理平台，把 coding agent 当正式队员）
+
+### 最值得借鉴：AI Agent Verification Loop
+
+```
+写代码 → make check → 失败就修复 → 再 make check → 直到全通过 → 才能算完成
+```
+
+每次改完代码必须跑完整验证流水线，不能主观判断"差不多了"。这和我的 `/commit` Skill 思路一致，但更强制——不跑 check 就不能算任务完成。
+
+### 任务生命周期（可参考）
+
+```
+enqueue → claim → start → complete/fail
+```
+每个状态转换都有明确事件。OpenHarness 的 `TaskCreate/TaskList` 可以朝这个方向细化。
+
+### Commit 规范（可参考）
+
+```
+feat(cli): ...
+fix(web): ...
+refactor(daemon): ...
+test(cli): ...
+```
+Conventional Commits + 作用域。OpenHarness 的 `/commit` Skill 已类似，但要求不如 Multica 严格。
+
+### Feature-based 架构原则
+
+```
+features/auth/ → features/workspace/ → features/issues/
+依赖方向单向，不许反向
+```
+对 OpenHarness 的 Skills 系统有参考意义——不同 Skill 之间也应该有清晰的依赖方向。
+
+### 代码规范（可参考）
+
+- 不手改生成代码（sqlc、generated/）
+- 不做"兼容层/临时方案"除非用户明确要求
+- 不为"以防万一"增加分支
+- 替换流程时，优先删除旧代码而非保留双写
+
+### 对 OpenHarness 的建议
+
+在 `/commit` Skill 里加验证环节：
+1. 分析改动范围
+2. 自动跑对应模块的测试
+3. 确认通过再提交
+
+避免"感觉没问题但漏了测试"的漏网之鱼。
+
+最后更新：2026-04-05
