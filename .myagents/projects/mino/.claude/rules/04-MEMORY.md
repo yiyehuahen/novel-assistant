@@ -74,6 +74,10 @@ OpenHarness 有独立的记忆系统（`/openharness` 工作区）：
 - **召回流程**：04-MEMORY定位 → Obsidian搜索 → Hindsight recall → topics
 - **Obsidian CLI**：`~/.local/bin/obsidian`（wrapper脚本）
 
+**Obsidian vs Hindsight 分工：**
+- **Obsidian**：主动整理 → 技能文档、项目经验、架构决策
+- **Hindsight**：自动积累 → 决策细节、bug解决、用户偏好、碎片知识点
+
 ---
 
 *Update as you learn.*
