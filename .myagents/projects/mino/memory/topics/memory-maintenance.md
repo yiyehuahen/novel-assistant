@@ -2,48 +2,90 @@
 
 *最后更新：2026-04-04*
 
-## 上下文按需召回法（本能）
+## 核心架构
 
-**这是我的记忆习惯，不是可选项。**
+```
+04-MEMORY（目录索引）→ Hindsight（主容器）→ topics（备份层）
+```
 
-每次记录时自问：
-1. 这条信息属于哪个话题？
-2. 该话题是否有对应 topics 文件？
-3. 如果是 → 写入 topics/，04-MEMORY 只留指针
-4. 如果话题新 → 创建 topics 文件
+**三层职责**：
 
-**阈值**：04-MEMORY 任何章节超过 20 行 → 必须外置
+| 层 | 作用 |
+|---|------|
+| 04-MEMORY | 目录索引，始终加载，快速定位 |
+| Hindsight | 主容器，语义存储，跨话题召回 |
+| topics/ | 人类可读备份，精准详情 |
 
-**召回**：问到此话题时，主动读取 topics 文件注入上下文
+**Hindsight Banks**：
 
-## 维护标准流程
+| Bank | 用途 |
+|------|------|
+| default（mino） | MyAgents 当前项目 |
+| openharness | OpenHarness 独立存储（2026-04-04 创建） |
 
-**原则**：04-MEMORY.md 保持精简（<100行），详细内容外置到 topics/。
+---
 
-### 维护步骤
+## 记忆记录流程（本能顺序）
 
-1. **评估内容归属**
-   - 跨项目/跨话题的决策/原则 → 04-MEMORY.md
-   - 单个话题的详细信息 → `memory/topics/<topic>.md`
-   - 当天工作记录 → `memory/YYYY-MM-DD.md`
+**这是我的本能习惯，不是可选项。**
 
-2. **写入时机**
-   - 新学到的技术细节 → 立即写入对应 topics 文件
-   - 跨话题经验/决策 → 立即更新 04-MEMORY.md
-   - 日常记录 → 每日日志
+### Step 1：04-MEMORY（目录索引）⭐ 最先做
+- 如果话题是新的 → 在 04-MEMORY 索引加一行（话题、存储位置、一句话摘要）
+- 如果话题已存在 → 确认登记位置
+- 这一步决定记忆去哪，**必须最先做**
 
-3. **外置检查**（每次记忆维护时执行）
-   - 如果 04-MEMORY.md 某话题超过 20 行 → 必须外置到 topics/
-   - 如果 topics 文件增长过快 → 考虑拆分
+### Step 2：Hindsight retain（主容器）
+```javascript
+mcp__hindsight__retain({
+  content: "核心内容",
+  tags: ["话题", "功能", "日期"],
+  context: "一句话描述"
+})
+```
 
-4. **召回方式**
-   - 问到此话题时：`Read: memory/topics/<topic>.md`
-   - 索引始终在 `memory/INDEX.md` 保持最新
+### Step 3：topics 文件备份
+- 当天日志 `memory/YYYY-MM-DD.md`
+- 或对应话题 `topics/xxx.md`
+- 人类可读备份，详细内容
 
-### 审计
+---
 
-- workspace-audit 审计：字符数检查、重复检测、过时清理
-- 最近审计：2026-04-02
+## 记忆召回流程（被问到时）
+
+**触发条件**：上下文没有、答案不清楚时
+
+```
+Step 1：04-MEMORY（已加载，最快）→ 快速定位话题指针
+Step 2：Hindsight recall → 语义模糊兜底，跨话题关联（适合久远记忆）
+Step 3：topics 文件 → 精准补充细节
+```
+
+**不是**漫无目的用 Hindsight recall 搜。
+
+```javascript
+// 语义召回（第二层兜底）
+mcp__hindsight__recall({
+  query: "用户的问题",
+  tags: ["相关话题"],
+  budget: "low"
+})
+```
+
+---
+
+## Hindsight 使用规范
+
+### retain（写入）
+- 所有记忆 first retain 到 Hindsight
+- tags 必须精准（决定召回质量）
+- null 参数会触发 Pydantic 验证错误，必须提供实际值
+
+### recall（召回）
+- tag 过滤是最有效的方式
+- budget 参数不保证输出大小，需配合 tags
+- 宽泛查询避免用 reflect（返回量巨大可达 175k+ 字符）
+
+---
 
 ## UPDATE_MEMORY 命令
 
@@ -51,13 +93,12 @@
 /UPDATE_MEMORY
 ```
 
-执行标准维护流程（见上方步骤）
+执行标准维护流程（见上方步骤）。
 
 ### Rules
 
-- **Externalization threshold**: any topic section in 04-MEMORY.md > 20 lines → externalize to `memory/topics/<topic>.md`
-- Information lives in one place — if it's detailed in a topic file, 04-MEMORY only needs a pointer
-- Every memory entry gets a timestamp `(YYYY-MM-DD)`
-- Deleting is more important than keeping — stale info is noise
-- If a topic file doesn't exist yet but should, create it
+- **Index first**: 任何记忆先更新 04-MEMORY 索引，再存储
+- **Hindsight primary**: 所有记忆 first retain 到 Hindsight
+- **Externalization threshold**: any topic section in 04-MEMORY.md > 20 lines → externalize
+- **Deletion is preservation**: 过时记忆要 delete，不积累噪音
 - Log what you did in today's daily note when you're done

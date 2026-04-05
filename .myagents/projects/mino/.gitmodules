@@ -1,0 +1,3 @@
+[submodule ".myagents/projects/mino/.claude/skills/obsidian-skills"]
+	path = .myagents/projects/mino/.claude/skills/obsidian-skills
+	url = https://github.com/kepano/obsidian-skills.git
