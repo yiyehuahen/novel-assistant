@@ -1,6 +1,47 @@
 # Skill Market 与技能系统
 
-*最后更新：2026-04-03*
+*最后更新：2026-04-06*
+
+## MCP 工具
+
+| 工具 | 用途 |
+|------|------|
+| prompts-chat | 143k+ 提示词库搜索 |
+| searxng | 本地元搜索 |
+| hindsight | 向量记忆 |
+| playwright | 浏览器自动化 |
+| feishu-mcp | 飞书文档 |
+| tavily-search | 全网搜索 |
+
+---
+
+## find-skills
+
+**已安装**：`~/.agents/skills/find-skills/SKILL.md`
+
+**用途**：帮用户发现和安装其他 skill。当用户问"有没有能做 X 的 skill"时使用。
+
+**搜索**：`npx skills find [query]`
+**安装**：`npx skills add <owner/repo@skill> -g -y`
+
+---
+
+## Skills.lc API
+
+**API Key**: `sk_live_R45frWUyAOC_YRxL7RM_73bP6nTMzeiKEq58DWheUZY`
+
+**搜索 skill**:
+```bash
+curl -s "https://skills.lc/api/v1/skills/search?q=关键词&limit=10" \
+  -H "Authorization: Bearer sk_live_R45frWUyAOC_YRxL7RM_73bP6nTMzeiKEq58DWheUZY"
+```
+
+**安装 skill**:
+```bash
+bun x skills-lc-cli add <owner/repo>
+```
+
+---
 
 ## ZeroOne Skill Market
 

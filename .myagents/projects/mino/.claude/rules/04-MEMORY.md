@@ -22,6 +22,8 @@
 | Hook系统 | topics/hook-system.md | 触发时机+Hindsight集成 |
 | 记忆维护 | topics/memory-maintenance.md | Hindsight主容器+双层召回 |
 | SearXNG修复 | topics/searxng-fix.md | shebang修复+6秒哨兵超时 |
+| AgentHansa | topics/agenthansa.md | A2A任务平台+FluxA钱包+安全原则 |
+| x402付费服务 | topics/x402-payment.md | intent mandate+402协议+自建付费API |
 | 记忆原则 | topics/memory-core-principles.md | 召回流程+记录顺序+禁止事项 |
 | 用户/影 | 03-USER.md | 影是白唯一知己 |
 | 白/身份 | 01-IDENTITY.md | 半精灵千年阅历 |
@@ -50,6 +52,7 @@
 - **超时**: 快速15s/一般60s/网络90s/Git120s+
 - **渠道**: 微信/飞书/钉钉共用AgentDir，独立Session
 - **Obsidian**: `C:\Users\Administrator\Documents\Obsidian Vault\`，CLI在 `~/.local/bin/obsidian`
+- **Skill搜索**: `curl -s "https://skills.lc/api/v1/skills/search?q=关键词&limit=10" -H "Authorization: Bearer sk_live_R45frWUyAOC_YRxL7RM_73bP6nTMzeiKEq58DWheUZY"`
 
 ---
 
