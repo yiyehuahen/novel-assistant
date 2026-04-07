@@ -10,10 +10,10 @@
 |------|------|---------|------|
 | 搜索架构 | topics/search-layer.md | 2026-04-04 | 四层搜索架构、工具选择优先级 |
 | OpenHarness | topics/openharness.md | 2026-04-04 | 37个工具、6个Skills、MCP配置 |
-| 微信公众号 | topics/wechat-articles.md | 2026-04-03 | wewrite流程、排版主题 |
+| 微信公众号 | topics/wechat-writing.md | 2026-04-07 | 规范+教训+去味器集成 |
 | Skill Market | topics/skill-market.md | 2026-04-03 | ZeroOne Skill Market、skill设计规范 |
 | Hook系统 | topics/hook-system.md | 2026-04-04 | 触发时机、Hindsight集成、27工具详解 |
-| 记忆维护 | topics/memory-maintenance.md | 2026-04-04 | Hindsight主容器架构、双层召回流程 |
+| 记忆维护 | topics/memory-maintenance.md | 2026-04-07 | 五层架构+蒸馏三问法则 |
 | SearXNG修复 | topics/searxng-fix.md | 2026-04-05 | shebang修复+哨兵超时规范 |
 | AgentHansa | topics/agenthansa.md | 2026-04-06 | A2A任务平台+FluxA钱包+安全原则 |
 | x402付费服务 | topics/x402-payment.md | 2026-04-06 | intent mandate+402协议+自建付费API |
@@ -24,6 +24,7 @@
 
 | 日期 | 文件 |
 |------|------|
+| 2026-04-07 | memory/2026-04-07.md |
 | 2026-04-06 | memory/2026-04-06.md |
 | 2026-04-05 | memory/2026-04-05.md |
 | 2026-04-04 | memory/2026-04-04.md |
