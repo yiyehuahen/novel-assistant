@@ -10,6 +10,7 @@
 |------|------|---------|------|
 | 搜索架构 | topics/search-layer.md | 2026-04-04 | 四层搜索架构、工具选择优先级 |
 | OpenHarness | topics/openharness.md | 2026-04-04 | 37个工具、6个Skills、MCP配置 |
+| Hindsight运维 | topics/hindsight-ops.md | 2026-07-21 | LLM换DeepSeek、容器配置、已知问题 |
 | 微信公众号 | topics/wechat-writing.md | 2026-04-07 | 规范+教训+去味器集成 |
 | Skill Market | topics/skill-market.md | 2026-04-03 | ZeroOne Skill Market、skill设计规范 |
 | Hook系统 | topics/hook-system.md | 2026-04-04 | 触发时机、Hindsight集成、27工具详解 |
@@ -25,6 +26,7 @@
 
 | 日期 | 文件 |
 |------|------|
+| 2026-07-21 | memory/2026-07-21.md |
 | 2026-04-09 | memory/2026-04-09.md |
 | 2026-04-07 | memory/2026-04-07.md |
 | 2026-04-06 | memory/2026-04-06.md |
